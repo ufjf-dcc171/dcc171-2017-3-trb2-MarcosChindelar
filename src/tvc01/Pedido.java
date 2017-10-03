@@ -21,9 +21,6 @@ public class Pedido {
     Date horaAberto;
     Date horaFechado;
     private List<ItemPedido> itens;
-
-    Pedido(){    
-    }
     
     Pedido(int numero){
         this.numPedido = numero;

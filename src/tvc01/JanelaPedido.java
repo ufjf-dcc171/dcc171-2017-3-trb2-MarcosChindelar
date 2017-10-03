@@ -35,8 +35,10 @@ public class JanelaPedido extends JFrame {
 
     private final JLabel lbnomeItem = new JLabel("Item");
     private final JLabel lbquantItem = new JLabel("Quantidade");
+    private final JLabel lbprecoItem = new JLabel("Preço");
     private final JTextField txtNomeItem = new JTextField(30);
     private final JTextField txtQuantItem = new JTextField(30);
+    private final JTextField txtprecoItem = new JTextField(30);
     private final JButton btnAdd = new JButton("Adicionar Item");
     private JanelaControle janelaControle;
 
@@ -51,11 +53,13 @@ public class JanelaPedido extends JFrame {
         add(new JScrollPane(lstItem), BorderLayout.WEST);
 
         lstItem.setModel(new ItemPedidoListModel(itens));
-        JPanel principal = new JPanel(new GridLayout(2, 2));
+        JPanel principal = new JPanel(new GridLayout(3, 3));
         principal.add(lbnomeItem);
         principal.add(txtNomeItem);
         principal.add(lbquantItem);
         principal.add(txtQuantItem);
+        principal.add(lbprecoItem);
+        principal.add(txtprecoItem);
         add(principal, BorderLayout.CENTER);
         add(btnAdd, BorderLayout.SOUTH);
 
@@ -68,10 +72,12 @@ public class JanelaPedido extends JFrame {
                 if (selecionado != null) {
                     txtQuantItem.setText("" + selecionado.getQuantidade());
                     txtNomeItem.setText(selecionado.getNome());
-               
+                    txtprecoItem.setText(""+selecionado.getPreco());
+                    
                 } else {
                     txtQuantItem.setText("");
                     txtNomeItem.setText("");
+                    txtprecoItem.setText("");
                    
                 }
             }
@@ -83,9 +89,10 @@ public class JanelaPedido extends JFrame {
                 if (selecionado != null) {
                     selecionado.setNome(txtNomeItem.getText());
                     selecionado.setQuantidade(Integer.parseInt(txtQuantItem.getText()));
+                    selecionado.setPreco(Double.parseDouble(txtprecoItem.getText()));
                     lstItem.updateUI();
                 } else {
-                    ItemPedido i = new ItemPedido(txtNomeItem.getText(), Integer.parseInt(txtQuantItem.getText()));
+                    ItemPedido i = new ItemPedido(txtNomeItem.getText(), Integer.parseInt(txtQuantItem.getText()),Double.parseDouble(txtprecoItem.getText()));
                     itens.add(i);
                     lstItem.updateUI();
                     

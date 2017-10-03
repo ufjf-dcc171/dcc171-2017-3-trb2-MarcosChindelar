@@ -10,30 +10,33 @@ package tvc01;
  * @author M.Chin
  */
 public class ItemPedido {
-
-    public ItemPedido(String nome, int quantidade) {
-        this.quantidade = quantidade;
-        this.nome = nome;
-    }
-
+    
     int quantidade;
-    float preço;
+    Double preco;
     String nome;
 
+
+    public ItemPedido(String nome, int quantidade,Double valor) {
+        this.quantidade = quantidade;
+        this.nome = nome;
+        this.preco = valor;
+    }
+    
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double valor) {
+        this.preco = valor;
+    }
+
+    
     public int getQuantidade() {
         return quantidade;
     }
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-    }
-
-    public float getPreço() {
-        return preço;
-    }
-
-    public void setPreço(float preço) {
-        this.preço = preço;
     }
 
     public String getNome() {
@@ -46,6 +49,7 @@ public class ItemPedido {
 
     @Override
     public String toString() {
-        return nome+" x"+quantidade+"\n";
+        return nome+" x"+quantidade+" R$ "+preco+"\n";
+        
     }   
 }

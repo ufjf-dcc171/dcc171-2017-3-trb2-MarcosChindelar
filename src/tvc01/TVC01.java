@@ -22,10 +22,10 @@ public class TVC01 {
 
     private static List<Mesa> getSampleData() {
 
-        ItemPedido i1 = new ItemPedido("Cervaja", 5);
-        ItemPedido i2 = new ItemPedido("Pastel", 10);
-        ItemPedido i3 = new ItemPedido("Coca-Cola", 2);
-        ItemPedido i4 = new ItemPedido("Porção de Kibe", 1);
+        ItemPedido i1 = new ItemPedido("Cervaja", 5, 9.60);
+        ItemPedido i2 = new ItemPedido("Pastel", 10,8.0);
+        ItemPedido i3 = new ItemPedido("Coca-Cola",2 ,5.50);
+        ItemPedido i4 = new ItemPedido("Porção de Kibe", 1,15.00);
         List<ItemPedido> itens1 = new ArrayList<ItemPedido>();
         List<ItemPedido> itens2 = new ArrayList<ItemPedido>();
         itens1.add(i1);itens1.add(i2);
