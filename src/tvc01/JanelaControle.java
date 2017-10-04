@@ -39,7 +39,7 @@ public class JanelaControle extends JFrame {
     private List<Mesa> mesas = new ArrayList<Mesa>();
 
     private JList<Mesa> lstMesas = new JList<Mesa>(new DefaultListModel<Mesa>());
-    private JList<Pedido> lstPedidos = new JList<Pedido>(new DefaultListModel<Pedido>());
+    public JList<Pedido> lstPedidos = new JList<Pedido>(new DefaultListModel<Pedido>());
     private JTextArea detalhes = new JTextArea ();
     
     JButton criaMesa = new JButton("Abrir Mesa");

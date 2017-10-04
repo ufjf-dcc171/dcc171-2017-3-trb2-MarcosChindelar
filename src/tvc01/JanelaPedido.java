@@ -95,6 +95,7 @@ public class JanelaPedido extends JFrame {
                     ItemPedido i = new ItemPedido(txtNomeItem.getText(), Integer.parseInt(txtQuantItem.getText()),Double.parseDouble(txtprecoItem.getText()));
                     itens.add(i);
                     lstItem.updateUI();
+                    janelaControle.lstPedidos.updateUI();
                     
                 }
                 janelaControle.getLstPedidos().updateUI();
