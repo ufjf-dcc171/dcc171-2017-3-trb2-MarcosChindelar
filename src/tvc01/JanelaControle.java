@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.geometry.VerticalDirection;
+import javafx.scene.layout.Border;
 import javax.swing.Box;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -53,28 +54,16 @@ public class JanelaControle extends JFrame {
         this.mesas = sampleData;
        
         JPanel principal = new JPanel(new GridLayout(2,1));
+        JPanel listas = new JPanel(new GridLayout(1,3));
+        listas.add(lstMesas);listas.add(lstPedidos);listas.add(detalhes);
+        JPanel botao = new JPanel(new GridLayout(4,1));
+        botao.add(criaMesa);botao.add(criaPedido);botao.add(excluiPedido);botao.add(fechaPedido);
         add(principal);
-        
-        detalhes.setEditable(false);
-        
-        Box botao = Box.createHorizontalBox();
-        botao.add(criaMesa);
-        botao.add(criaPedido);
-        botao.add(excluiPedido);
-        botao.add(fechaPedido);
-        Box listas = Box.createHorizontalBox();
-        listas.add(new JScrollPane(lstMesas));
-        listas.add(new JScrollPane(lstPedidos));
-        listas.add(detalhes);
-        lstPedidos.getBounds();
+        principal.add(listas);
+        principal.add(botao);
+        detalhes.setEditable(false);     
         
         
-        add(listas,BorderLayout.CENTER);
-        add(botao,BorderLayout.AFTER_LAST_LINE);
-        
-          
-        
-      
         lstMesas.setModel(new MesaListModel(mesas));
         lstMesas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lstMesas.addListSelectionListener(new ListSelectionListener() {
@@ -101,7 +90,7 @@ public class JanelaControle extends JFrame {
                         i++;
                     }   
                         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-                        detalhes.setText(detalhes.getText()+(selecionado.situação? "Hora de abertura:"+sdf.format(selecionado.horaAberto) : "Hora de abertura:"+sdf.format(selecionado.horaAberto) +"\nHora de Fechamento: "+sdf.format(selecionado.horaFechado)));
+                        detalhes.setText(detalhes.getText()+(selecionado.situação? "Hora de abertura: "+sdf.format(selecionado.horaAberto) : "Hora de abertura :"+sdf.format(selecionado.horaAberto) +"\nHora de Fechamento: "+sdf.format(selecionado.horaFechado)));
                 } else {
                     lstPedidos.setModel(new DefaultListModel<>());
                 }
@@ -182,6 +171,7 @@ public class JanelaControle extends JFrame {
                     if (selecionado != null) {
                         selecionado.situação = false;
                         selecionado.horaFechado = new Date();
+                        detalhes.updateUI();
                         lstPedidos.updateUI();
                     } else {
                         JOptionPane.showMessageDialog(null, "Selecione um pedido!");

@@ -12,7 +12,7 @@ public class TVC01 {
     public static void main(String[] args) {
 
         JanelaControle janela = new JanelaControle(getSampleData());
-        janela.setSize(430, 300);
+        janela.setSize(600, 300);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setLocationRelativeTo(null);
         janela.setVisible(true);
