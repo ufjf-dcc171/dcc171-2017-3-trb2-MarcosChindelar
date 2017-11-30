@@ -1,0 +1,5 @@
+Total de mesas: 4
+Total de pedidos da mesa 1: 0
+Total de pedidos da mesa 2: 0
+Total de pedidos da mesa 3: 0
+Total de pedidos da mesa 6: 0

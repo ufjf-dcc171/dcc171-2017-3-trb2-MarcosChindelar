@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tvc01;
+package tvc02;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -31,7 +33,7 @@ import javax.swing.event.ListSelectionListener;
 public class JanelaPedido extends JFrame {
 
     private List<ItemPedido> itens;
-    private JList<ItemPedido> lstItem = new JList<ItemPedido>(new DefaultListModel<ItemPedido>());
+    public JList<ItemPedido> lstItem = new JList<ItemPedido>(new DefaultListModel<ItemPedido>());
 
     private final JLabel lbnomeItem = new JLabel("Item");
     private final JLabel lbquantItem = new JLabel("Quantidade");
@@ -72,33 +74,51 @@ public class JanelaPedido extends JFrame {
                 if (selecionado != null) {
                     txtQuantItem.setText("" + selecionado.getQuantidade());
                     txtNomeItem.setText(selecionado.getNome());
-                    txtprecoItem.setText(""+selecionado.getPreco());
-                    
+                    txtprecoItem.setText("" + selecionado.getPreco());
+
                 } else {
                     txtQuantItem.setText("");
                     txtNomeItem.setText("");
                     txtprecoItem.setText("");
-                   
+
                 }
+                
             }
         });
-       btnAdd.addActionListener(new ActionListener() {
+        btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              ItemPedido selecionado = lstItem.getSelectedValue();
+                ItemPedido selecionado = lstItem.getSelectedValue();
                 if (selecionado != null) {
                     selecionado.setNome(txtNomeItem.getText());
                     selecionado.setQuantidade(Integer.parseInt(txtQuantItem.getText()));
                     selecionado.setPreco(Double.parseDouble(txtprecoItem.getText()));
+                    janelaControle.getLstPedidos().updateUI();
                     lstItem.updateUI();
+                    lstItem.clearSelection();
+                    janelaControle.getLstPedidos().clearSelection();
+                    try {
+                        janelaControle.escreve();
+                    } catch (IOException ex) {
+                        Logger.getLogger(JanelaPedido.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
-                    ItemPedido i = new ItemPedido(txtNomeItem.getText(), Integer.parseInt(txtQuantItem.getText()),Double.parseDouble(txtprecoItem.getText()));
+                    ItemPedido i = new ItemPedido(txtNomeItem.getText(), Integer.parseInt(txtQuantItem.getText()), Double.parseDouble(txtprecoItem.getText()));
                     itens.add(i);
+                    janelaControle.getLstPedidos().updateUI();
                     lstItem.updateUI();
-                    janelaControle.lstPedidos.updateUI();
-                    
+                    lstItem.clearSelection();
+                    janelaControle.getLstPedidos().clearSelection();
+                }
+                try {
+                    janelaControle.escreve();
+                } catch (IOException ex) {
+                    Logger.getLogger(JanelaPedido.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 janelaControle.getLstPedidos().updateUI();
+                lstItem.updateUI();
+                lstItem.clearSelection();
+                janelaControle.getLstPedidos().clearSelection();
             }
             
         });
@@ -108,13 +128,4 @@ public class JanelaPedido extends JFrame {
     public void setJanelaControle(JanelaControle janela) {
         this.janelaControle = janela;
     }
-
-    void solicitaNovoPedido() {
-        setLocationRelativeTo(null);
-        setVisible(true);
-        txtNomeItem.setText("");
-        txtNomeItem.requestFocus();
-        txtQuantItem.setText("");
-    }
-
 }

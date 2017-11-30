@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tvc01;
+package tvc02;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,9 +25,20 @@ public class Pedido {
     Pedido(int numero){
         this.numPedido = numero;
         this.itens = new ArrayList<ItemPedido>();
-        horaAberto = new Date();
+        horaAberto=new Date();
+        
         situação = true;
     }
+
+    public int getNumPedido() {
+        return numPedido;
+    }
+
+    public void setNumPedido(int numPedido) {
+        this.numPedido = numPedido;
+    }
+    
+    
     
     public Date getHoraAberto() {
         return horaAberto;
@@ -65,6 +76,5 @@ public class Pedido {
     public String toString() {
         return "Pedido: "+numPedido;
     }
-    
-    
+       
 }

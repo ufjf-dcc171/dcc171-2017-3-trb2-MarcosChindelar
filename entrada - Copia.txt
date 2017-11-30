@@ -1,0 +1,43 @@
+2
+1
+2
+0
+false
+Tue Nov 28 23:52:56 BRST 2017
+null
+1
+Polaca
+1
+10.0
+1
+true
+Tue Nov 28 23:52:56 BRST 2017
+null
+2
+A
+2
+24.0
+1
+1
+1.0
+2
+2
+0
+true
+Tue Nov 28 23:52:56 BRST 2017
+null
+1
+Tucunare
+1
+20.0
+1
+true
+Tue Nov 28 23:52:56 BRST 2017
+null
+2
+Bagre
+1
+40.0
+1
+1
+1.0

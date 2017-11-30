@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tvc01;
+package tvc02;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,24 +14,25 @@ import javax.swing.event.ListDataListener;
  *
  * @author M.Chin
  */
-public class ItemPedidoListModel implements ListModel<ItemPedido> {
+public class MesaListModel implements ListModel<Mesa> {
 
-    private List<ItemPedido> itens;
-    private List<ListDataListener> dataListeners;
+    private final List<Mesa> mesas;
+    private final List<ListDataListener> dataListeners;
 
-    public ItemPedidoListModel(List<ItemPedido> itens) {
-        this.itens = itens;
+    public MesaListModel(List<Mesa> mesas) {
+
+        this.mesas = mesas;
         this.dataListeners = new ArrayList<>();
     }
 
     @Override
     public int getSize() {
-        return itens.size();
+        return mesas.size();
     }
 
     @Override
-    public ItemPedido getElementAt(int index) {
-        return itens.get(index);
+    public Mesa getElementAt(int index) {
+        return mesas.get(index);
     }
 
     @Override
@@ -43,10 +44,4 @@ public class ItemPedidoListModel implements ListModel<ItemPedido> {
     public void removeListDataListener(ListDataListener l) {
         this.dataListeners.remove(l);
     }
-
-    @Override
-    public String toString() {
-        return ""+itens;
-    }
-
 }

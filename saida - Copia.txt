@@ -1,0 +1,41 @@
+Total de mesas: 2
+Total de pedidos da mesa 1: 2
+Codigo: 0
+Situação: Fechado
+Abertura: 23:52
+Fechamento:  
+Total de itens: 1
+Item: Polaca
+Quantidade: 1
+Preço: 10.0
+Codigo: 1
+Situação: Aberto
+Abertura: 23:52
+Fechamento:  
+Total de itens: 2
+Item: A
+Quantidade: 2
+Preço: 24.0
+Item: 1
+Quantidade: 1
+Preço: 1.0
+Total de pedidos da mesa 2: 2
+Codigo: 0
+Situação: Aberto
+Abertura: 23:52
+Fechamento:  
+Total de itens: 1
+Item: Tucunare
+Quantidade: 1
+Preço: 20.0
+Codigo: 1
+Situação: Aberto
+Abertura: 23:52
+Fechamento:  
+Total de itens: 2
+Item: Bagre
+Quantidade: 1
+Preço: 40.0
+Item: 1
+Quantidade: 1
+Preço: 1.0
